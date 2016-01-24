@@ -1,0 +1,20 @@
+{"data": [{
+              "title" : "Nexus",
+			  "image" : "http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg",
+			  "link"  : "demo.html",
+			  "price" : "29000",
+			  "score" : "5"
+
+}],
+
+"No.of objects":5
+
+}
+
+
+{"Name":"Nexus",
+"Price":"29000",
+"link":"demo.html",
+"image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,
+"score":"5"
+}

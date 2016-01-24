@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/canvasjs.js"></script>
+  <script src="js/jquery.circlechart.js"></script>
+
+</head>
+<h2>Create Object from JSON String</h2>
+<div class="container">
+<div class ="row" id="feed">
+
+</div>
+</div>
+<script>
+function graphfunction(z) {
+		var chart = new CanvasJS.Chart(z, {
+
+		    height:90,
+			zoomEnabled: true, 
+            animationEnabled: true,
+			axisX:{
+				interval: 1,
+				gridThickness:0 ,
+				labelFontSize: 8,
+				maximum: 4
+				},
+				
+				axisY2:{
+				interval: 10,
+				gridThickness:0,
+				lineThickness:  0,
+				maximum: 10
+				},
+			
+			data: [
+			{     
+				type: "bar",
+             
+				axisYType: "secondary",
+								
+				dataPoints: [
+				
+				{label: "Overall",y: 5 ,color:"red" },
+				{label: "Battery",y: 6 ,color:"yellow" },
+				{label: "Display",y: 7 ,color:"green"},
+				{label: "Sound",y: 8 ,color:"orange"},
+				{label: "Volume",y: 1,color:"blue"}
+				
+				]
+			}
+			
+			]
+		});
+
+chart.render();
+}
+var text = '{"data":[' +
+'{"Name":"Nexus","Price":"29000","link":"demo.html","image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,"score":"5","id":"ph"},' +
+'{"Name":"Nexus","Price":"29000","link":"demo.html","image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,"score":"5" ,"id":"ph2"},' +
+'{"Name":"Nexus","Price":"29000","link":"demo.html","image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,"score":"5" ,"id":"ph3"},' +
+'{"Name":"Nexus","Price":"29000","link":"demo.html","image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,"score":"5","id":"ph4" },' +
+'{"Name":"Nexus","Price":"29000","link":"demo.html","image":"http://img6a.flixcart.com/image/mobile/k/y/3/motorola-nexus-6-125x125-imaefmudvfwzs2fx.jpeg" ,"score":"5" ,"id":"ph5"}]}';
+
+obj = JSON.parse(text);
+var len = obj.data.length;
+//for(x=0;x<len;x++){
+//var y = '<div class="col-md-3">'+'<img src = '+obj.data[x].image+'>'+'<br>'+obj.data[x].Name +'<br>'+obj.data[x].Price+'</div>';
+//$('.row').append(y);
+//}
+
+for(x=0;x<len;x++){
+
+var y = '<div class=" col-xs-12 col-sm-6 col-md-2 " style="width: 25%;padding-top:3%;height: 100%" ><div class="col-md-12 col-sm-12 col-xs-12" id="feed-image"  style="height: 75%;"><a href='+obj.data[x].link+'><div class="row"><div class="col-md-5 col-sm-5 col-xs-5" style="height: 75%;"><img src='+obj.data[x].image+' style="margin-top: 9px"></div><div class="col-md-7 col-sm-7 col-xs-4" style="padding-top:6%;padding-left:16%"><div class="demo-1" data-percent='+obj.data[x].score+'></div><div id='+obj.data[x].id+'></div></div></div><div class="row"><div class="col-md-10"><a href='+obj.data[x].link+'><b>'+obj.data[x].Name+'</b> 6 (Midnight Blue, 32 GB)</a><br><span class="fk-font-17 fk-bold">Rs.'+obj.data[x].Price+'</span><br><br></div></div></a></div></div>';
+$('#feed').append(y);
+var z= obj.data[x].id;
+graphfunction(z);
+
+}
+
+</script>
+
+<script>
+$('.demo-1').percentcircle();
+</script>
+
+</body>
+</html>

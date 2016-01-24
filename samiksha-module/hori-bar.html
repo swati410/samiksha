@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>  
+	<script type="text/javascript">
+	window.onload = function () {
+		var chart = new CanvasJS.Chart("chartContainer", {
+
+			
+			width:125,
+			zoomEnabled: true, 
+			
+            animationEnabled: true,
+			axisX:{
+				interval: 1,
+				gridThickness:0 ,
+				labelFontSize: 11,
+				maximum: 4
+				},
+				
+				axisY2:{
+				interval: 10,
+				gridThickness:0,
+				lineThickness:  0,
+				maximum: 10
+				},
+			
+			data: [
+			{     
+				type: "bar",
+             
+				axisYType: "secondary",
+								
+				dataPoints: [
+				
+				{y: 5, label: "Sweden"  },
+				{y: 6, label: "Taiwan"  },
+				{y: 7, label: "Russia"  },
+				{y: 8, label: "Spain"  },
+				{y: 9, label: "Australia"  },
+				{y: 12, label: "Canada"  },
+				{y: 132, label: "US" }
+				]
+			}
+			
+			]
+		});
+
+chart.render();
+}
+</script>
+<script type="text/javascript" src="js/canvasjs.min.js"></script>
+</head>
+<body>
+	<div id="chartContainer" style="height: 300px; width: 100%;">
+	</div>
+</body>
+</html>

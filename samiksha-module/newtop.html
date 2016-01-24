@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="css/font-awesome.min1.css"/> 
+   <link rel="stylesheet" href="css/font-awesome.min.css"/>
+ 
+   
+   
+   
+<style>
+
+ddl-title{
+  background-color:#5bc0de !important;
+  color:#fff !important;
+  font-style:italic;
+  font-size:80%;
+}
+  
+.ddl-select.input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+</style> 
+  
+  
+</head>
+<body>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Dropdown Searchbox</h2>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+      	<div class="col-md-6">
+          <div class="form-horizontal">
+            <div class="input-group">
+              <div class="ddl-select input-group-btn">
+                <select id="ddlsearch" class="selectpicker form-control" data-style="btn-primary">
+                  <option value="" data-hidden="true" class="ddl-title">SEARCH</option>
+                  <option value="google">Google</option>
+                  <option value="yahoo">Yahoo</option>
+                  <option value="bing">Bing</option>
+                </select>
+              </div>
+              <input id="txtkey" type="text" class="form-control" placeholder="Enter here" aria-describedby="ddlsearch">
+              <span class="input-group-btn">
+                <button id="btn-search" class="btn btn-info" type="button"><i class="fa fa-search fa-fw"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+      	<div class="row">
+          <div id="sresult" class="well"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.selectpicker').selectpicker({
+    width:'100px'
+  });
+
+  $('#btn-search').on('click',function(e){
+  	e.preventDefault();
+    var search_engine = $('#ddlsearch option:selected').val(),
+        search_key = $('#txtkey').val(),
+        $sresult = $('#sresult'),
+    	label = '<span class="label label-danger">URL</span>';
+    if(search_engine && search_key){
+      switch (search_engine) {
+        case 'google':
+          $sresult.html(label + ': http://www.google.com/search?q=' + search_key);
+          break;
+        case 'bing':
+          $sresult.html(label + ': http://www.bing.com/search?q=' + search_key);
+          break;
+        case 'yahoo':
+          $sresult.html(label + ': http://search.yahoo.com/search?p=' + search_key);
+          break;
+      }
+    }
+  });
+});
+  
+
+</script>
+</body>
+</html>
